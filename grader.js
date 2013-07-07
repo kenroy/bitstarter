@@ -67,7 +67,7 @@ if(require.main == module) {
     program
         .option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
         .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
-        .option('-u, --url <URL>', 'Remote URL to check')
+        .option('-u, --url <url>', 'Remote URL to check')
         .parse(process.argv);
 
     if (program.file){ 
@@ -81,7 +81,8 @@ if(require.main == module) {
            sys.puts('Error: ' + result.message);
            this.retry(5000); // try again after 5 sec
          } else {
-           fs.writeFileSync(index_url, result);
+           fs.openSync(index_url, 'w');
+           fs.writeFile(index_url, result);
          }
        });
        var checkJson = checkHtmlFile(index_url, program.checks);
