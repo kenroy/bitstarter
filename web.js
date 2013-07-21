@@ -3,6 +3,12 @@ var fs = require('fs');
 
 var app = express.createServer(express.logger());
 
+app.configure(function() {
+    app.use(express.static(path.join(__dirname, 'public')));
+    app.use(express.bodyParser());
+    app.use(express.logger("short"));
+});
+
 var indexFile = fs.readFileSync('./index.html');
 
 var buf = new Buffer(indexFile);
