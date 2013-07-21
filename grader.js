@@ -67,10 +67,10 @@ if(require.main == module) {
     program
         .option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
         .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
-        .option('-u, --url <url>', 'Remote URL to check')
+        .option('-u, --url <url_file>', 'Remote URL to check')
         .parse(process.argv);
 
-    if (program.file){ 
+    if (program.file){
        var checkJson = checkHtmlFile(program.file, program.checks);
     }
 
