@@ -27,6 +27,9 @@
 /* All form factors */
 
 /* Main body and headings */
+.brand {
+    color:#56ff00 !important;
+}
 body {
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
